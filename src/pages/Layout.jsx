@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom';
 
 const Layout = () => {
   return (
-    <header className='bg-indigo-600 text-white'>
+    <header className='bg-indigo-500 text-white'>
       <nav className='flex items-center justify-between p-4'>
         <Link to='/' className='fa-solid fa-house-chimney nav-link'></Link>
         <div className='flex gap-2'>
