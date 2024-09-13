@@ -2,9 +2,14 @@ import { useContext, useState } from 'react';
 import Alert from '../../Components/Alert';
 import { loginUser } from '../../controllers/userController';
 import { UserContext } from '../../contexts/UserContext';
+import { useNavigate } from 'react-router-dom';
 
 const Login = () => {
+  // Use User Context
   const { setUser } = useContext(UserContext);
+
+  // Use Navigate Hook
+  const navigate = useNavigate();
 
   // Error State
   const [error, setError] = useState(null);
@@ -32,6 +37,8 @@ const Login = () => {
       for (let key in data) {
         localStorage.setItem(key, data[key]);
       }
+      // Navigate to Home
+      navigate('/dashboard');
     } catch (error) {
       // Set Error state
       setError(error.message);

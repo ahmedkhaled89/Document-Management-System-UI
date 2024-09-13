@@ -2,9 +2,14 @@ import { useContext, useState } from 'react';
 import Alert from '../../Components/Alert';
 import { registerUser } from '../../controllers/userController';
 import { UserContext } from '../../contexts/UserContext';
+import { useNavigate } from 'react-router-dom';
 
 const Register = () => {
+  // Use User Context
   const { setUser } = useContext(UserContext);
+
+  // Use Navigate Hook
+  const navigate = useNavigate();
 
   // Error state
   const [error, setError] = useState('');
@@ -43,6 +48,8 @@ const Register = () => {
       for (let key in data) {
         localStorage.setItem(key, data[key]);
       }
+      // Navigate to Home
+      navigate('/dashboard');
     } catch (error) {
       setError(error.message);
     }
