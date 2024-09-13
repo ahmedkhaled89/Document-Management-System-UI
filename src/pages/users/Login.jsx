@@ -1,8 +1,11 @@
-import { useState } from 'react';
+import { useContext, useState } from 'react';
 import Alert from '../../Components/Alert';
 import { loginUser } from '../../controllers/userController';
+import { UserContext } from '../../contexts/UserContext';
 
 const Login = () => {
+  const { setUser } = useContext(UserContext);
+
   // Error State
   const [error, setError] = useState(null);
 
@@ -14,9 +17,18 @@ const Login = () => {
   const handleLogin = async (e) => {
     e.preventDefault();
     try {
+      // Login User
       const data = await loginUser(email, password);
 
-      // Stor Data in local storage
+      // Update User State
+      setUser({
+        email,
+        nationalID: data.nationalID,
+        _id: data._id,
+        workspaces: [],
+      });
+
+      // Store User Data in local storage
       for (let key in data) {
         localStorage.setItem(key, data[key]);
       }
