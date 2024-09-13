@@ -5,13 +5,19 @@ const Layout = () => {
     <>
       <header className='bg-indigo-500 text-white'>
         <nav className='flex items-center justify-between p-4'>
-          <Link to='/' className='fa-solid fa-house-chimney nav-link'></Link>
+          <Link
+            title='Home'
+            to='/'
+            className='fa-solid fa-house-chimney nav-link'
+          ></Link>
           <div className='flex gap-2'>
             <Link
+              title='Login'
               to='/login'
               className='fa-solid fa-right-to-bracket nav-link'
             ></Link>
             <Link
+              title='Register'
               to='/register'
               className='fa-solid fa-user-plus nav-link'
             ></Link>
