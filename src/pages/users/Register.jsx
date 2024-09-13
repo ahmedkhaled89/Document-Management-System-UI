@@ -1,0 +1,93 @@
+import { useState } from 'react';
+import Alert from '../../Components/Alert';
+import { registerUser } from '../../controllers/userController';
+
+const Register = () => {
+  // Error state
+  const [error, setError] = useState('');
+
+  // Form state
+  const [firstName, setFirstName] = useState('');
+  const [lastName, setLastName] = useState('');
+  const [nationalID, setNationalID] = useState('');
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [passwordConfirm, setPasswordConfirm] = useState('');
+
+  // Handle Register
+  const handleRegister = async (e) => {
+    e.preventDefault();
+    try {
+      const data = await registerUser({
+        firstName,
+        lastName,
+        nationalID,
+        email,
+        password,
+        passwordConfirm,
+      });
+      localStorage.setItem('token', data.token);
+      localStorage.setItem('email', email);
+      localStorage.setItem('nationalID', nationalID);
+      localStorage.setItem('firstName', firstName);
+      localStorage.setItem('lastName', lastName);
+    } catch (error) {
+      setError(error.message);
+    }
+  };
+
+  return (
+    <section>
+      <h1 className='title'>Register</h1>
+      <form onSubmit={handleRegister}>
+        <input
+          className='input'
+          type='text'
+          placeholder='First Name'
+          autoFocus
+          value={firstName}
+          onChange={(e) => setFirstName(e.target.value)}
+        />
+        <input
+          className='input'
+          type='text'
+          placeholder='Last Name'
+          value={lastName}
+          onChange={(e) => setLastName(e.target.value)}
+        />
+        <input
+          className='input'
+          type='text'
+          placeholder='National ID'
+          value={nationalID}
+          onChange={(e) => setNationalID(e.target.value)}
+        />
+        <input
+          className='input'
+          type='email'
+          placeholder='Email Address'
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+        />
+        <input
+          className='input'
+          type='password'
+          placeholder='Password'
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+        />
+        <input
+          className='input'
+          type='password'
+          placeholder='Confirm Password'
+          value={passwordConfirm}
+          onChange={(e) => setPasswordConfirm(e.target.value)}
+        />
+        <button className='btn'>Register</button>
+      </form>
+      {error && <Alert message={error} />}
+    </section>
+  );
+};
+
+export default Register;
