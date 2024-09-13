@@ -26,11 +26,11 @@ const Register = () => {
         password,
         passwordConfirm,
       });
-      localStorage.setItem('token', data.token);
-      localStorage.setItem('email', email);
-      localStorage.setItem('nationalID', nationalID);
-      localStorage.setItem('firstName', firstName);
-      localStorage.setItem('lastName', lastName);
+
+      // Stor Data in local storage
+      for (let key in data) {
+        localStorage.setItem(key, data[key]);
+      }
     } catch (error) {
       setError(error.message);
     }
