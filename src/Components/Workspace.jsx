@@ -1,3 +1,5 @@
+import Doc from './Doc';
+
 /* eslint-disable react/prop-types */
 const Workspace = ({ workspace }) => {
   return (
@@ -15,6 +17,10 @@ const Workspace = ({ workspace }) => {
         |<span title='Owner NID'> {workspace.ownerID.nationalID} </span> |
         <span title='Owner Email'> {workspace.ownerID.email}</span>
       </p>
+      <div>
+        {workspace.DocsIDs &&
+          workspace.DocsIDs.map((d) => <Doc key={d._id} doc={d} />)}
+      </div>
     </div>
   );
 };
