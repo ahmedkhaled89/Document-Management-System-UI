@@ -13,4 +13,20 @@ const getAllWorkspaces = async () => {
   return data;
 };
 
-export { getAllWorkspaces };
+// ************************ Get Single Workspace By ID ************************
+const getWorkspaceById = async (_id) => {
+  const res = await fetch(`/api/workspaces/${_id}`, {
+    Authorization: `Bearer ${localStorage.token}`,
+    'Content-Type': 'Application/json',
+  });
+
+  const data = await res.json();
+  if (!res.ok) {
+    console.log(data);
+
+    throw Error(data.error);
+  }
+  console.log(data);
+  return data;
+};
+export { getAllWorkspaces, getWorkspaceById };
