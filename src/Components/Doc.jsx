@@ -1,4 +1,3 @@
-import { Link } from 'react-router-dom';
 import { deleteDoc, downloadDoc } from '../controllers/docController';
 import { useState } from 'react';
 
@@ -37,23 +36,20 @@ const Doc = ({ doc }) => {
         <div className='card font-bold mb-2 p-2 flex justify-between'>
           <h3>{doc.docName}</h3>
           <div className='flex gap-2'>
-            <Link
+            <i
               title='Download'
               className='fa-solid fa-download'
               onClick={handleDownload}
-            ></Link>
-            <Link title='Preview' className='fa-solid fa-eye'></Link>
+            ></i>
+            <i title='Preview' className='fa-solid fa-eye'></i>
             {doc.ownerID._id === localStorage.getItem('_id') && (
               <>
-                <Link
-                  title='Update'
-                  className='fa-solid fa-pen-to-square'
-                ></Link>
-                <Link
+                <i title='Update' className='fa-solid fa-pen-to-square'></i>
+                <i
                   title='Delete'
                   className='fa-solid fa-trash'
                   onClick={handleDelete}
-                ></Link>
+                ></i>
               </>
             )}
           </div>
