@@ -1,11 +1,14 @@
-import { Link, useParams } from 'react-router-dom';
+import { Link, useNavigate, useParams } from 'react-router-dom';
 import Doc from './Doc';
 import { useEffect, useState } from 'react';
+import { deleteWorkspace } from '../controllers/workspaceController';
 
 const Workspace = () => {
   const { _id } = useParams();
+  const navigate = useNavigate();
 
   const [workspace, setWorkspace] = useState();
+  const [deleted, setDeleted] = useState(false);
   useEffect(() => {
     (async () => {
       const res = await fetch(`/api/workspaces/${_id}`, {
@@ -23,9 +26,14 @@ const Workspace = () => {
     })();
   }, []);
 
+  const handleDelete = async (_id) => {
+    await deleteWorkspace(_id);
+    setDeleted(true);
+    navigate('/dashboard');
+  };
   return (
     <div className='card mb-6 bg-indigo-500'>
-      {workspace && (
+      {workspace && !deleted && (
         <>
           <div className='flex justify-between'>
             <div>
@@ -46,13 +54,21 @@ const Workspace = () => {
                 |<span title='Owner Email'> {workspace.ownerID.email}</span>
               </p>
             </div>
-            <div>
+            <div className='flex gap-2 items-start'>
               <Link
                 to={`/upload`}
                 state={{ workspaceID: workspace._id }}
                 title='Add New Document'
-                className='fa-solid fa-plus'
-              ></Link>
+              >
+                <i className='fa-solid fa-plus'></i>
+              </Link>
+              {localStorage.getItem('_id') === workspace.ownerID._id && (
+                <i
+                  title='Delete'
+                  className='fa-solid fa-trash'
+                  onClick={() => handleDelete(workspace._id)}
+                ></i>
+              )}
             </div>
           </div>
           <div>
