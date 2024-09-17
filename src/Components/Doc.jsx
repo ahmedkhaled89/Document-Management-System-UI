@@ -42,7 +42,7 @@ const Doc = ({ doc }) => {
               onClick={handleDownload}
             ></i>
             <i title='Preview' className='fa-solid fa-eye'></i>
-            {doc.ownerID._id === localStorage.getItem('_id') && (
+            {doc.ownerID === localStorage.getItem('_id') && (
               <>
                 <i title='Update' className='fa-solid fa-pen-to-square'></i>
                 <i
