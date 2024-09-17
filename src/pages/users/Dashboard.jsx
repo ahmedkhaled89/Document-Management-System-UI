@@ -2,7 +2,7 @@ import { useContext, useEffect, useState } from 'react';
 import { getAllWorkspaces } from '../../controllers/workspaceController';
 import { WorkspacesContext } from '../../contexts/WorkspacesContext';
 import Alert from '../../Components/Alert';
-import Workspace from '../../Components/Workspace';
+import { Link } from 'react-router-dom';
 
 const Dashboard = () => {
   // Error State
@@ -22,17 +22,6 @@ const Dashboard = () => {
         setError(error);
       }
     })();
-    // setTimeout(
-    //   async () => {
-    //   try {
-    //     // Get All Workspaces
-    //     const data = await getAllWorkspaces();
-    //     // Update Workspaces state
-    //     setWorkspaces(data.workspaces);
-    //   } catch (error) {
-    //     setError(error);
-    //   }
-    // }, 0);
   }, []);
 
   return (
@@ -41,7 +30,11 @@ const Dashboard = () => {
 
       {workspaces &&
         workspaces.map((workspace) => (
-          <Workspace key={workspace._id} workspace={workspace} />
+          <Link key={workspace._id} to={`/workspace/${workspace._id}`}>
+            <div className='card mb-2 p-2 bg-indigo-500'>
+              <h2 className='title'>{workspace.name}</h2>
+            </div>
+          </Link>
         ))}
       {error && <Alert message={error} />}
     </section>
