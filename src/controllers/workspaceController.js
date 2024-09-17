@@ -29,4 +29,16 @@ const getWorkspaceById = async (_id) => {
   console.log(data);
   return data;
 };
-export { getAllWorkspaces, getWorkspaceById };
+
+// ************************ Get All Workspaces ************************
+const deleteWorkspace = async (_id) => {
+  const res = await fetch(`/api/workspaces/${_id}`, {
+    method: 'DELETE',
+    headers: {
+      Authorization: `Bearer ${localStorage.getItem('token')}`,
+    },
+  });
+  const data = await res.json();
+  console.log(data);
+};
+export { getAllWorkspaces, getWorkspaceById, deleteWorkspace };
