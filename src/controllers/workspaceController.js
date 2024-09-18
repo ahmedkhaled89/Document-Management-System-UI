@@ -30,7 +30,7 @@ const getWorkspaceById = async (_id) => {
   return data;
 };
 
-// ************************ Get All Workspaces ************************
+// ************************ Delete Workspaces ************************
 const deleteWorkspace = async (_id) => {
   const res = await fetch(`/api/workspaces/${_id}`, {
     method: 'DELETE',
@@ -41,4 +41,17 @@ const deleteWorkspace = async (_id) => {
   const data = await res.json();
   console.log(data);
 };
-export { getAllWorkspaces, getWorkspaceById, deleteWorkspace };
+
+// ************************ Create New Workspaces ************************
+const createWorkspace = async (name) => {
+  const res = await fetch(`/api/workspaces`, {
+    method: 'POST',
+    headers: {
+      Authorization: `Bearer ${localStorage.getItem('token')}`,
+    },
+    body: JSON.stringify({ name }),
+  });
+  const data = await res.json();
+  console.log(data);
+};
+export { getAllWorkspaces, getWorkspaceById, deleteWorkspace, createWorkspace };
