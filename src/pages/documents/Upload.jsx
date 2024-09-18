@@ -35,7 +35,7 @@ const Upload = () => {
       throw Error(data.error);
     }
     console.log(data);
-    navigate('/dashboard');
+    navigate(`/workspace/${workspaceID}`);
   };
 
   return (
