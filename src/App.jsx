@@ -7,6 +7,7 @@ import Home from './pages/posts/Home';
 import Upload from './pages/documents/Upload';
 import Workspace from './Components/Workspace';
 import Search from './pages/documents/Search';
+import CreateWorkspace from './pages/workspaces/CreateWorkspace';
 
 const App = () => {
   return (
@@ -17,7 +18,10 @@ const App = () => {
 
           <Route path='dashboard' element={<Dashboard />} />
           <Route path='search' element={<Search />} />
-          <Route path='workspace/:_id' element={<Workspace />} />
+          <Route path='workspace'>
+            <Route path='new' element={<CreateWorkspace />} />
+            <Route path=':_id' element={<Workspace />} />
+          </Route>
           <Route path='upload' element={<Upload />} />
           <Route path='login' element={<Login />} />
           <Route path='register' element={<Register />} />
