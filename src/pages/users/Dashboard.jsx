@@ -26,8 +26,12 @@ const Dashboard = () => {
 
   return (
     <section className='card'>
-      <h1 className='title'>Dashboard</h1>
-
+      <div className='flex items-center justify-between'>
+        <h1 className='title'>Dashboard</h1>
+        <div>
+          <Link title='Add New Workspace' className='fa-solid fa-plus'></Link>
+        </div>
+      </div>
       {workspaces &&
         workspaces.map((workspace) => (
           <Link key={workspace._id} to={`/workspace/${workspace._id}`}>
