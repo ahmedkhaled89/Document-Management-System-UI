@@ -6,6 +6,7 @@ import Dashboard from './pages/users/Dashboard';
 import Home from './pages/posts/Home';
 import Upload from './pages/documents/Upload';
 import Workspace from './Components/Workspace';
+import Search from './pages/documents/Search';
 
 const App = () => {
   return (
@@ -15,6 +16,7 @@ const App = () => {
           <Route index element={<Home />} />
 
           <Route path='dashboard' element={<Dashboard />} />
+          <Route path='search' element={<Search />} />
           <Route path='workspace/:_id' element={<Workspace />} />
           <Route path='upload' element={<Upload />} />
           <Route path='login' element={<Login />} />
