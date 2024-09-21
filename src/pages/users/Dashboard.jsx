@@ -1,35 +1,22 @@
-import { useContext, useEffect, useState } from 'react';
-import { getAllWorkspaces } from '../../controllers/workspaceController';
+import { useContext } from 'react';
 import { WorkspacesContext } from '../../contexts/WorkspacesContext';
 import Alert from '../../Components/Alert';
 import { Link } from 'react-router-dom';
 
 const Dashboard = () => {
-  // Error State
-  const [error, setError] = useState(null);
-
-  // Use Workspaces State
-  const { workspaces, setWorkspaces } = useContext(WorkspacesContext);
-
-  useEffect(() => {
-    (async () => {
-      try {
-        // Get All Workspaces
-        const data = await getAllWorkspaces();
-        // Update Workspaces state
-        setWorkspaces(data.workspaces);
-      } catch (error) {
-        setError(error);
-      }
-    })();
-  }, []);
+  // Use Workspaces State to get Workspaces or error
+  const { workspaces, error } = useContext(WorkspacesContext);
 
   return (
     <section className='card'>
       <div className='flex items-center justify-between'>
         <h1 className='title'>Dashboard</h1>
         <div>
-          <Link title='Add New Workspace' className='fa-solid fa-plus'></Link>
+          <Link
+            to='/workspace/new'
+            title='Add New Workspace'
+            className='fa-solid fa-plus'
+          ></Link>
         </div>
       </div>
       {workspaces &&
