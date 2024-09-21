@@ -31,6 +31,7 @@ const Workspace = () => {
     setDeleted(true);
     navigate('/dashboard');
   };
+
   return (
     <div className='card mb-6 bg-indigo-500'>
       {workspace && !deleted && (
@@ -62,12 +63,21 @@ const Workspace = () => {
               >
                 <i className='fa-solid fa-plus'></i>
               </Link>
+
               {localStorage.getItem('_id') === workspace.ownerID._id && (
-                <i
-                  title='Delete'
-                  className='fa-solid fa-trash'
-                  onClick={() => handleDelete(workspace._id)}
-                ></i>
+                <>
+                  <Link
+                    title='Update Workspace'
+                    to={`/workspace/update/${_id}`}
+                  >
+                    <i className='fa-solid fa-pen'></i>
+                  </Link>
+                  <i
+                    title='Delete'
+                    className='fa-solid fa-trash'
+                    onClick={() => handleDelete(workspace._id)}
+                  ></i>
+                </>
               )}
             </div>
           </div>
