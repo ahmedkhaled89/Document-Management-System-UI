@@ -8,6 +8,7 @@ import Upload from './pages/documents/Upload';
 import Workspace from './Components/Workspace';
 import Search from './pages/documents/Search';
 import CreateWorkspace from './pages/workspaces/CreateWorkspace';
+import UpdateWorkspace from './pages/workspaces/UpdateWorkspace';
 
 const App = () => {
   return (
@@ -20,6 +21,7 @@ const App = () => {
           <Route path='search' element={<Search />} />
           <Route path='workspace'>
             <Route path='new' element={<CreateWorkspace />} />
+            <Route path='update/:_id' element={<UpdateWorkspace />} />
             <Route path=':_id' element={<Workspace />} />
           </Route>
           <Route path='upload' element={<Upload />} />
