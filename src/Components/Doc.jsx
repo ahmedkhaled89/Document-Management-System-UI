@@ -47,7 +47,11 @@ const Doc = ({ doc }) => {
             </Link>
             {doc.ownerID === localStorage.getItem('_id') && (
               <>
-                <i title='Update' className='fa-solid fa-pen-to-square'></i>
+                <Link
+                  to={`/workspace/${doc.workspaceID}/doc/${doc._id}/update`}
+                >
+                  <i title='Update' className='fa-solid fa-pen-to-square'></i>
+                </Link>
                 <i
                   title='Delete'
                   className='fa-solid fa-trash'
