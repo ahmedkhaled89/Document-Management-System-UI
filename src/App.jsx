@@ -9,6 +9,7 @@ import Workspace from './Components/Workspace';
 import Search from './pages/documents/Search';
 import CreateWorkspace from './pages/workspaces/CreateWorkspace';
 import UpdateWorkspace from './pages/workspaces/UpdateWorkspace';
+import UpdateDoc from './pages/documents/UpdateDoc';
 
 const App = () => {
   return (
@@ -25,6 +26,11 @@ const App = () => {
             <Route path=':_id' element={<Workspace />} />
           </Route>
           <Route path='workspace/:workspaceID/upload' element={<Upload />} />
+          <Route
+            path='workspace/:workspaceID/doc/:docID/update'
+            element={<UpdateDoc />}
+          />
+
           <Route path='login' element={<Login />} />
           <Route path='register' element={<Register />} />
         </Route>
