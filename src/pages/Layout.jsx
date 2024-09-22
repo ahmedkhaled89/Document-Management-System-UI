@@ -1,6 +1,6 @@
 import { useContext } from 'react';
 import { Link, Outlet, useNavigate } from 'react-router-dom';
-import { UserContext } from '../Contexts/UserContext';
+import { UserContext } from '../contexts/UserContext';
 
 const Layout = () => {
   const { user, setUser } = useContext(UserContext);
@@ -30,6 +30,11 @@ const Layout = () => {
                 title='Dashboard'
                 to='/dashboard'
                 className='fa-solid fa-circle-user nav-link'
+              ></Link>
+              <Link
+                title='Search Document'
+                to='/search'
+                className='fa-solid fa-search nav-link'
               ></Link>
               <button
                 title='Logout'
