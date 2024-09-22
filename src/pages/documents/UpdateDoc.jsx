@@ -38,7 +38,7 @@ const UpdateDoc = () => {
       throw Error(data.error);
     }
     console.log(data);
-    // navigate(`/workspace/${workspaceID}`);
+    navigate(`/workspace/${workspaceID}`);
   };
 
   return (
