@@ -1,10 +1,10 @@
 import { useState } from 'react';
-import { useLocation, useNavigate } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 
 const Upload = () => {
   // Get workspaceID from location
-  const location = useLocation();
-  const { workspaceID } = location.state;
+  const params = useParams();
+  const { workspaceID } = params;
 
   // Navigate Hook
   const navigate = useNavigate();
