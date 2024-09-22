@@ -57,7 +57,7 @@ const Workspace = () => {
             </div>
             <div className='flex gap-2 items-start'>
               <Link
-                to={`/upload`}
+                to={`/workspace/${_id}/upload`}
                 state={{ workspaceID: workspace._id }}
                 title='Add New Document'
               >

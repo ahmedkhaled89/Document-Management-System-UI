@@ -24,7 +24,7 @@ const App = () => {
             <Route path='update/:_id' element={<UpdateWorkspace />} />
             <Route path=':_id' element={<Workspace />} />
           </Route>
-          <Route path='upload' element={<Upload />} />
+          <Route path='workspace/:workspaceID/upload' element={<Upload />} />
           <Route path='login' element={<Login />} />
           <Route path='register' element={<Register />} />
         </Route>
