@@ -1,6 +1,7 @@
 /* eslint-disable react/prop-types */
-import { createContext, useEffect, useState } from 'react';
+import { createContext, useContext, useEffect, useState } from 'react';
 import { getAllWorkspaces } from '../controllers/workspaceController';
+import { UserContext } from './UserContext';
 
 export const WorkspacesContext = createContext();
 
@@ -8,21 +9,25 @@ const WorkspacesProvider = ({ children }) => {
   // Workspace Status
   const [workspaces, setWorkspaces] = useState([]);
 
+  const { user } = useContext(UserContext);
+
   // Error Status
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    (async () => {
-      try {
-        // Get All Workspaces
-        const data = await getAllWorkspaces();
-        // Update Workspaces state
-        setWorkspaces(data.workspaces);
-      } catch (error) {
-        setError(error);
-      }
-    })();
-  }, []);
+    if (user.email) {
+      (async () => {
+        try {
+          // Get All Workspaces
+          const data = await getAllWorkspaces();
+          // Update Workspaces state
+          setWorkspaces(data.workspaces);
+        } catch (error) {
+          setError(error);
+        }
+      })();
+    }
+  }, [user]);
 
   return (
     <WorkspacesContext.Provider
