@@ -1,14 +1,17 @@
-import { useRef } from 'react';
+import { useContext, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { WorkspacesContext } from '../../contexts/WorkspacesContext';
 
 const CreateWorkspace = () => {
   const name = useRef('');
   const navigate = useNavigate();
+  // Update State
+  const { setUpdate } = useContext(WorkspacesContext);
 
   const handleCreate = (e) => {
     e.preventDefault();
     const n = name.current;
-    const createWorkspce = async (n) => {
+    const createWorkspace = async (n) => {
       const res = await fetch(`/api/workspaces/createworkspace`, {
         method: 'POST',
         headers: {
@@ -22,9 +25,11 @@ const CreateWorkspace = () => {
         console.log(data.error);
       }
       console.log(data._id);
+      // Trigger Update state
+      setUpdate((prev) => prev + 1);
       navigate(`/workspace/${data._id}`);
     };
-    createWorkspce(n);
+    createWorkspace(n);
   };
   return (
     <section className='card'>
