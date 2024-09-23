@@ -22,3 +22,5 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+src/pages/documents/Preview2.jsx
+src/pages/documents/Preview3.jsx
