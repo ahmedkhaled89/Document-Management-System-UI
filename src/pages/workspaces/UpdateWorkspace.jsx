@@ -10,7 +10,7 @@ const UpdateWorkspace = () => {
   const navigate = useNavigate();
 
   // Use workspaces context
-  const { workspaces } = useContext(WorkspacesContext);
+  const { workspaces, setUpdate } = useContext(WorkspacesContext);
 
   // Workspace Name Hook
   const [name, setName] = useState('');
@@ -34,6 +34,10 @@ const UpdateWorkspace = () => {
     });
     const data = await res.json();
     console.log(data);
+
+    // Trigger Update
+    setUpdate((prev) => prev + 1);
+
     // Navigate to Workspace Page
     navigate(`/workspace/${_id}`);
   };
