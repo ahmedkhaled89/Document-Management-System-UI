@@ -42,18 +42,20 @@ const Workspace = () => {
                 state={workspace}
                 title='Workspace Name'
                 to={`/workspace/${workspace._id}`}
+                className='text-white'
               >
                 <h2 className='font-bold text-lg first-letter:uppercase mb-[-6px]'>
                   {workspace.name}
                 </h2>
+                <p className='text-[10px] mb-4'>
+                  <span title='Owner Name'>
+                    {`${workspace.ownerID.firstName} ${workspace.ownerID.lastName} `}
+                  </span>
+                  |
+                  <span title='Owner NID'>{workspace.ownerID.nationalID} </span>
+                  |<span title='Owner Email'> {workspace.ownerID.email}</span>
+                </p>
               </Link>
-              <p className='text-[10px] mb-4'>
-                <span title='Owner Name'>
-                  {`${workspace.ownerID.firstName} ${workspace.ownerID.lastName} `}
-                </span>
-                |<span title='Owner NID'> {workspace.ownerID.nationalID} </span>
-                |<span title='Owner Email'> {workspace.ownerID.email}</span>
-              </p>
             </div>
             <div className='flex gap-2 items-start'>
               <Link
