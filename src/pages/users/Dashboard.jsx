@@ -24,7 +24,7 @@ const Dashboard = () => {
         </div>
       )}
 
-      {workspaces &&
+      {workspaces.length ? (
         workspaces.map((workspace) => (
           <Link key={workspace._id} to={`/workspace/${workspace._id}`}>
             <div
@@ -44,7 +44,12 @@ const Dashboard = () => {
               </p>
             </div>
           </Link>
-        ))}
+        ))
+      ) : (
+        <div className='title text-center text-indigo-500'>
+          No Workspaces Yet!
+        </div>
+      )}
     </section>
   );
 };
