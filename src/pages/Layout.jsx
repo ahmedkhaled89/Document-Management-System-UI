@@ -11,7 +11,8 @@ const Layout = () => {
     if (confirm('Confirm Logout')) {
       setUser({});
       localStorage.clear();
-      navigate('/');
+      // navigate to login
+      navigate('/login');
     }
   };
 
