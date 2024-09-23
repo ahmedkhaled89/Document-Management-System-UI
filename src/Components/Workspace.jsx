@@ -36,13 +36,12 @@ const Workspace = () => {
     <div className='card mb-6 bg-indigo-500'>
       {workspace && !deleted && (
         <>
-          <div className='flex justify-between'>
+          <div className='flex justify-between text-white'>
             <div>
               <Link
                 state={workspace}
                 title='Workspace Name'
                 to={`/workspace/${workspace._id}`}
-                className='text-white'
               >
                 <h2 className='font-bold text-lg first-letter:uppercase mb-[-6px]'>
                   {workspace.name}
