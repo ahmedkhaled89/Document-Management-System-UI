@@ -25,7 +25,7 @@ const Dashboard = () => {
             <div
               className={`card mb-2 p-2 text-white ${
                 workspace.ownerID._id === localStorage.getItem('_id')
-                  ? 'bg-red-500'
+                  ? 'bg-slate-700'
                   : 'bg-indigo-500'
               }`}
             >
