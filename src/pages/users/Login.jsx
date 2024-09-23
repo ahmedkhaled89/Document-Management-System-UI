@@ -2,7 +2,7 @@ import { useContext, useState } from 'react';
 import Alert from '../../Components/Alert';
 import { loginUser } from '../../controllers/userController';
 import { UserContext } from '../../contexts/UserContext';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 const Login = () => {
   // Use User Context
@@ -65,6 +65,16 @@ const Login = () => {
         />
         <button className='btn'>Login</button>
       </form>
+      <div>
+        Do Not Have Account?{' '}
+        <Link
+          className='text-indigo-900 font-bold'
+          title='Register'
+          to={'/register'}
+        >
+          Register
+        </Link>
+      </div>
       {error && <Alert message={error} />}
     </section>
   );
