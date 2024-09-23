@@ -1,11 +1,15 @@
 import { Link, useNavigate, useParams } from 'react-router-dom';
 import Doc from './Doc';
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { deleteWorkspace } from '../controllers/workspaceController';
+import { WorkspacesContext } from '../contexts/WorkspacesContext';
 
 const Workspace = () => {
   const { _id } = useParams();
   const navigate = useNavigate();
+
+  // Update State
+  const { setUpdate } = useContext(WorkspacesContext);
 
   const [workspace, setWorkspace] = useState();
   const [deleted, setDeleted] = useState(false);
@@ -29,6 +33,8 @@ const Workspace = () => {
   const handleDelete = async (_id) => {
     await deleteWorkspace(_id);
     setDeleted(true);
+    // Trigger Update after delete workspace
+    setUpdate((prev) => prev + 1);
     navigate('/dashboard');
   };
 
