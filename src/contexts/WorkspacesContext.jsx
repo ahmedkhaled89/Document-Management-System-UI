@@ -11,6 +11,9 @@ const WorkspacesProvider = ({ children }) => {
 
   const { user } = useContext(UserContext);
 
+  // Update State
+  const [update, setUpdate] = useState(0);
+
   // Error Status
   const [error, setError] = useState(null);
 
@@ -27,11 +30,11 @@ const WorkspacesProvider = ({ children }) => {
         }
       })();
     }
-  }, [user]);
+  }, [user, update]);
 
   return (
     <WorkspacesContext.Provider
-      value={{ workspaces, setWorkspaces, error, setError }}
+      value={{ workspaces, setWorkspaces, error, setError, setUpdate, update }}
     >
       {children}
     </WorkspacesContext.Provider>
