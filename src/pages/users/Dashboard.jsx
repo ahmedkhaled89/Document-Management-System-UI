@@ -22,8 +22,21 @@ const Dashboard = () => {
       {workspaces &&
         workspaces.map((workspace) => (
           <Link key={workspace._id} to={`/workspace/${workspace._id}`}>
-            <div className='card mb-2 p-2 bg-indigo-500'>
-              <h2 className='title'>{workspace.name}</h2>
+            <div
+              className={`card mb-2 p-2 text-white ${
+                workspace.ownerID._id === localStorage.getItem('_id')
+                  ? 'bg-red-500'
+                  : 'bg-indigo-500'
+              }`}
+            >
+              <h2 className='title mb-0'>{workspace.name}</h2>
+              <p className='text-[10px] mb-4'>
+                <span title='Owner Name'>
+                  {`${workspace.ownerID.firstName} ${workspace.ownerID.lastName} `}
+                </span>
+                |<span title='Owner NID'> {workspace.ownerID.nationalID} </span>
+                |<span title='Owner Email'> {workspace.ownerID.email}</span>
+              </p>
             </div>
           </Link>
         ))}
