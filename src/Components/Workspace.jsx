@@ -89,8 +89,11 @@ const Workspace = () => {
             </div>
           </div>
           <div>
-            {workspace.DocsIDs &&
-              workspace.DocsIDs.map((d) => <Doc key={d._id} doc={d} />)}
+            {workspace.DocsIDs.length ? (
+              workspace.DocsIDs.map((d) => <Doc key={d._id} doc={d} />)
+            ) : (
+              <div className='title text-white text-center'>No Docs Yet!</div>
+            )}
           </div>
         </>
       )}
