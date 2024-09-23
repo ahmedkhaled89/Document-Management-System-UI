@@ -9,16 +9,21 @@ const Dashboard = () => {
 
   return (
     <section className='card'>
-      <div className='flex items-center justify-between'>
-        <h1 className='title'>Dashboard</h1>
-        <div>
-          <Link
-            to='/workspace/new'
-            title='Add New Workspace'
-            className='fa-solid fa-plus'
-          ></Link>
+      {error ? (
+        <Alert message={error} />
+      ) : (
+        <div className='flex items-center justify-between'>
+          <h1 className='title'>Dashboard</h1>
+          <div>
+            <Link
+              to='/workspace/new'
+              title='Add New Workspace'
+              className='fa-solid fa-plus'
+            ></Link>
+          </div>
         </div>
-      </div>
+      )}
+
       {workspaces &&
         workspaces.map((workspace) => (
           <Link key={workspace._id} to={`/workspace/${workspace._id}`}>
@@ -40,7 +45,6 @@ const Dashboard = () => {
             </div>
           </Link>
         ))}
-      {error && <Alert message={error} />}
     </section>
   );
 };
