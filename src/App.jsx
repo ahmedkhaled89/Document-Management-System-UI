@@ -12,6 +12,7 @@ import UpdateWorkspace from './pages/workspaces/UpdateWorkspace';
 import UpdateDoc from './pages/documents/UpdateDoc';
 import GuestRoutes from './Routes/GuestRoutes';
 import AuthRoutes from './Routes/AuthRoutes';
+import Preview from './pages/documents/Preview';
 
 const App = () => {
   return (
@@ -37,6 +38,7 @@ const App = () => {
               path='workspace/:workspaceID/doc/:docID/update'
               element={<UpdateDoc />}
             />
+            <Route path='preview/:_id' element={<Preview />} />
           </Route>
         </Route>
       </Routes>
