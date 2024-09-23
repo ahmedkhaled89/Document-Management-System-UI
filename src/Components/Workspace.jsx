@@ -3,6 +3,7 @@ import Doc from './Doc';
 import { useContext, useEffect, useState } from 'react';
 import { deleteWorkspace } from '../controllers/workspaceController';
 import { WorkspacesContext } from '../contexts/WorkspacesContext';
+import Success from './Success';
 
 const Workspace = () => {
   const { _id } = useParams();
@@ -35,7 +36,9 @@ const Workspace = () => {
     setDeleted(true);
     // Trigger Update after delete workspace
     setUpdate((prev) => prev + 1);
-    navigate('/dashboard');
+    setTimeout(() => {
+      navigate('/dashboard');
+    }, 3000);
   };
 
   return (
@@ -97,6 +100,7 @@ const Workspace = () => {
           </div>
         </>
       )}
+      {deleted && <Success message='Workspace Deleted Successfully' />}
     </div>
   );
 };
