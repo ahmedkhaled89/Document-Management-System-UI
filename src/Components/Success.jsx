@@ -4,7 +4,7 @@ import { useState } from 'react';
 const Success = ({ message }) => {
   const [show, setShow] = useState(true);
 
-  setTimeout(() => setShow(false), 2000);
+  setTimeout(() => setShow(false), 3000);
   return (
     <div>
       {show && (
