@@ -42,11 +42,9 @@ const Doc = ({ doc }) => {
               className='fa-solid fa-download'
               onClick={handleDownload}
             ></i>
-            {doc.extension === 'pdf' && (
-              <Link to={`/testpreview/${doc._id}`} title='Preview'>
-                <i className='fa-solid fa-eye'></i>
-              </Link>
-            )}
+            <Link to={`/preview/${doc._id}`} title='Preview'>
+              <i className='fa-solid fa-eye'></i>
+            </Link>
             {doc.ownerID === localStorage.getItem('_id') && (
               <>
                 <Link
