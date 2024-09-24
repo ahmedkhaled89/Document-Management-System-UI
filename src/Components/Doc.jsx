@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import { deleteDoc, downloadDoc } from '../controllers/docController';
 import { useState } from 'react';
+import Success from './Success';
 
 /* eslint-disable react/prop-types */
 const Doc = ({ doc }) => {
@@ -62,7 +63,7 @@ const Doc = ({ doc }) => {
           </div>
         </div>
       )}
-      {deleted && <div>Deleted Successfully</div>}
+      {deleted && <Success message='Deleted Successfully' />}
     </div>
   );
 };
