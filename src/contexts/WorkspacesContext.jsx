@@ -1,6 +1,6 @@
 /* eslint-disable react/prop-types */
 import { createContext, useContext, useEffect, useState } from 'react';
-import { getAllWorkspaces } from '../controllers/workspaceController';
+import { getUserWorkspaces } from '../controllers/workspaceController';
 import { UserContext } from './UserContext';
 
 export const WorkspacesContext = createContext();
@@ -22,7 +22,7 @@ const WorkspacesProvider = ({ children }) => {
       (async () => {
         try {
           // Get All Workspaces
-          const data = await getAllWorkspaces();
+          const data = await getUserWorkspaces();
           // Update Workspaces state
           setWorkspaces(data.workspaces);
         } catch (error) {
