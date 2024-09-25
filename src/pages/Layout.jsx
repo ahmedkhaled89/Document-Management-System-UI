@@ -18,48 +18,58 @@ const Layout = () => {
 
   return (
     <>
-      <header className='bg-indigo-500 text-white'>
-        <nav className='flex items-center justify-between p-4'>
-          <Link
-            title='Home'
-            to='/'
-            className='fa-solid fa-house-chimney nav-link'
-          ></Link>
-          {user.email ? (
-            <div className='flex items-center gap-2'>
-              <Link
-                title='Dashboard'
-                to='/dashboard'
-                className='fa-solid fa-circle-user nav-link'
-              ></Link>
-              <Link
-                title='Search Document'
-                to='/search'
-                className='fa-solid fa-search nav-link'
-              ></Link>
-              <button
-                title='Logout'
-                onClick={handleLogout}
-                className='fa-solid fa-right-from-bracket nav-link'
-              ></button>
-            </div>
-          ) : (
-            <div className='flex gap-2'>
-              <Link
-                title='Login'
-                to='/login'
-                className='fa-solid fa-right-to-bracket nav-link'
-              ></Link>
-              <Link
-                title='Register'
-                to='/register'
-                className='fa-solid fa-user-plus nav-link'
-              ></Link>
-            </div>
-          )}
+      <header className='sticky top-0 z-[1] bg-indigo-600 text-white shadow-md'>
+        <nav className='flex items-center justify-between p-4 max-w-7xl mx-auto'>
+          <Link title='Home' to='/' className='text-xl font-semibold'>
+            <i className='fa-solid fa-house-chimney'></i>
+          </Link>
+          <div className='flex items-center gap-4'>
+            {user.email ? (
+              <>
+                <Link
+                  title='Dashboard'
+                  to='/dashboard'
+                  className='nav-link hover:text-indigo-300'
+                >
+                  <i className='fa-solid fa-circle-user'></i>
+                </Link>
+                <Link
+                  title='Search Document'
+                  to='/search'
+                  className='nav-link hover:text-indigo-300'
+                >
+                  <i className='fa-solid fa-search'></i>
+                </Link>
+                <button
+                  title='Logout'
+                  onClick={handleLogout}
+                  className='nav-link hover:text-indigo-300'
+                >
+                  <i className='fa-solid fa-right-from-bracket'></i>
+                </button>
+              </>
+            ) : (
+              <>
+                <Link
+                  title='Login'
+                  to='/login'
+                  className='nav-link hover:text-indigo-300'
+                >
+                  <i className='fa-solid fa-right-to-bracket'></i>
+                </Link>
+                <Link
+                  title='Register'
+                  to='/register'
+                  className='nav-link hover:text-indigo-300'
+                >
+                  <i className='fa-solid fa-user-plus'></i>
+                </Link>
+              </>
+            )}
+          </div>
         </nav>
       </header>
-      <main className='p-4'>
+      <main className='p-6 max-w-7xl mx-auto bg-white rounded-lg shadow-lg mt-4'>
         <Outlet />
       </main>
     </>
