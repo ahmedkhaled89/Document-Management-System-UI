@@ -42,7 +42,7 @@ const Workspace = () => {
   };
 
   return (
-    <div className='card mb-6 bg-indigo-500'>
+    <div className='card mb-6 bg-slate-700'>
       {workspace && !deleted && (
         <>
           <div className='flex justify-between text-white'>
