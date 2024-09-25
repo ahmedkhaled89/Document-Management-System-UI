@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { deleteDoc, downloadDoc } from '../controllers/docController';
 import { useState } from 'react';
 import Success from './Success';
@@ -8,6 +8,7 @@ const Doc = ({ doc }) => {
   // Delete State
   const [deleted, setDeleted] = useState(false);
 
+  const navigate = useNavigate();
   // Grab Doc Name and id
   const _id = doc._id;
   const fileName = doc.docName;
@@ -18,6 +19,7 @@ const Doc = ({ doc }) => {
       await downloadDoc(_id, fileName);
     } catch (error) {
       console.log(error);
+      navigate(`/preview/${_id}`);
     }
   };
 
