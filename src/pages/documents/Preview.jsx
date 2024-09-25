@@ -40,7 +40,7 @@ const Preview = () => {
     return <div>Loading...</div>;
   }
 
-  const { base64String, type, extension } = fileData;
+  const { base64String, type, extension, docName, originalname } = fileData;
   console.log(type);
 
   const blobUrl = createBlobUrl(base64String, type);
@@ -62,7 +62,7 @@ const Preview = () => {
         !type.startsWith('video/') &&
         !type.startsWith('audio/') &&
         type !== 'application/pdf' && (
-          <a href={blobUrl} download={`file.${extension}`}>
+          <a href={blobUrl} download={`${docName || 'file'}.${extension}`}>
             Download file
           </a>
         )}
