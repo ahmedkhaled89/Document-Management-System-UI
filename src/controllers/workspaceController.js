@@ -13,6 +13,21 @@ const getAllWorkspaces = async () => {
   return data;
 };
 
+// ************************ Get User Workspaces ************************
+const getUserWorkspaces = async () => {
+  // Fetch All Workspaces
+  const res = await fetch(`/api/workspaces/user/`, {
+    headers: {
+      Authorization: `Bearer ${localStorage.token}`,
+    },
+  });
+  const data = await res.json();
+  if (!res.ok) {
+    throw data.error;
+  }
+  return data;
+};
+
 // ************************ Get Single Workspace By ID ************************
 const getWorkspaceById = async (_id) => {
   const res = await fetch(`/api/workspaces/${_id}`, {
@@ -54,4 +69,10 @@ const createWorkspace = async (name) => {
   const data = await res.json();
   console.log(data);
 };
-export { getAllWorkspaces, getWorkspaceById, deleteWorkspace, createWorkspace };
+export {
+  getAllWorkspaces,
+  getWorkspaceById,
+  deleteWorkspace,
+  createWorkspace,
+  getUserWorkspaces,
+};
