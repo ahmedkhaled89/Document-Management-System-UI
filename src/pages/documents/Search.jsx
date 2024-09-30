@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import Doc from '../../Components/Doc';
+import { Link } from 'react-router-dom';
 
 const Search = () => {
   const [query, setQuery] = useState('');
@@ -38,7 +39,15 @@ const Search = () => {
         <button className='btn'>Search</button>
       </form>
       <div className='card mt-3 bg-indigo-500'>
-        {docs && docs.map((doc) => <Doc key={doc._id} doc={doc} />)}
+        {docs &&
+          docs.map((doc) => (
+            <div key={doc._id} className='bg-slate-600 card mb-2 p-1'>
+              <Link title='workspace' to={`/workspace/${doc.workspaceID._id}`}>
+                {doc.workspaceID.name}
+              </Link>
+              <Doc key={doc._id} doc={doc} />
+            </div>
+          ))}
       </div>
     </div>
   );
